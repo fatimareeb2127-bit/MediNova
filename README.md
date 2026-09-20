@@ -32,4 +32,5 @@ HTML5 • CSS3 • Bootstrap 5 • JavaScript • Font Awesome
 ### Departments
 ![MediNova Departments](./screenshots/departments.png)
 
-
+### Appointment
+![Appointment](./screenshots/appointment.png)
