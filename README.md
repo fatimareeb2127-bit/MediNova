@@ -26,11 +26,20 @@ HTML5 • CSS3 • Bootstrap 5 • JavaScript • Font Awesome
 ### Home
 ![MediNova Home](./screenshots/home.png)
 
-### Doctors
-![MediNova Doctors](./screenshots/doctors.png)
+### About
+![MediNova About](./screenshots/about.png)
+
+### Services
+![MediNova Services](./screenshots/services.png)
 
 ### Departments
 ![MediNova Departments](./screenshots/departments.png)
 
+### Doctors
+![MediNova Doctors](./screenshots/doctors.png)
+
+### Gallery
+![MediNova Gallery](./screenshots/gallery.png)
+
 ### Appointment
-![Appointment](./screenshots/appointment.png)
+![MediNova Appointment](./screenshots/appointment.png)
