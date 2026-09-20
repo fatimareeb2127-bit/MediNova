@@ -27,7 +27,7 @@ HTML5 • CSS3 • Bootstrap 5 • JavaScript • Font Awesome
 ![MediNova Home](./screenshots/home.png)
 
 ### Doctors
-![MediNova Doctors](./screenshots/doctor.png)
+![MediNova Doctors](./screenshots/doctors.png)
 
 ### Departments
 ![MediNova Departments](./screenshots/departments.png)
