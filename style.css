@@ -1,0 +1,262 @@
+.size{
+    height: 700px;
+    width: 100%;
+}
+.navbar-collapse{
+    margin-left: 400px;
+    
+}
+.navbar-collapse .navbar-nav a:hover{
+    color: #11a4ff;
+    transition: 0.2s;
+ 
+}
+
+.h1{
+    
+    color: darkslateblue;
+}
+
+.head{
+    margin-top: 120px;
+}
+
+
+.text-primary{
+    color: #2c4964 !important;
+}
+
+.department{
+    position: relative;
+    width: fit-content;
+}
+
+.department::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 62px;
+    background-color: blue;
+    left: -5%;
+    bottom: -8px;
+}
+
+.department::after{
+    content: "";
+    position: absolute;
+    width: 105%;
+    height: 62px;
+    background-color: rgba(100, 100, 244, 0.148);
+    right: 0%;
+    bottom: -8px;
+    z-index: -6;
+}
+
+.section-1-card{
+    min-height: 700px;
+    background-image: url(./images/hero.jpg);
+    background-size: cover;
+    padding-top: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Services{
+    position: relative;
+    width: fit-content;
+}
+.Services::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: blue;
+    left: 33%;
+    z-index: 1;
+    bottom: -9px;
+}
+
+.Services::after{
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -8px;
+    left: 20%;
+  
+}
+
+.Doctor{
+    position: relative;
+    width: fit-content;
+}
+.Doctor::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: blue;
+    left: 35%;
+    z-index: 1;
+    bottom: -9px;
+}
+
+.Doctor::after{
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -8px;
+    left: 22%;
+  
+}
+
+.zoom:hover{
+    width: 100%;
+    cursor: pointer;
+    transition: 0.9s;
+    transform: scale(0.9);
+    
+}
+.zoom1:hover{
+    cursor: auto;
+    transition: 0.9s ease;
+    transform: scale(0.9);
+}
+.gallery .gallery-item img {
+    transition: all ease-in-out 0.4s;
+}
+
+
+.Question{
+    position: relative;
+    width: fit-content;
+}
+.Question::before{
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: blue;
+    left: 42%;
+    z-index: 1;
+    bottom: -21px;
+}
+
+.Question::after{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -20px;
+    left: 25%; 
+}
+
+.Appointment{
+    position: relative;
+    width: fit-content;
+}
+.Appointment::before{
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 3px;
+    background-color: blue;
+    left: 37%;
+    z-index: 1;
+    bottom: -21px;
+}
+
+.Appointment::after{
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -20px;
+    left: 20%; 
+}
+.Gallery{
+    position: relative;
+    width: fit-content;
+}
+.Gallery::before{
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background-color: blue;
+    left: 35%;
+    z-index: 1;
+    bottom: -21px;
+}
+
+.Gallery::after{
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -20px;
+    left: 20%; 
+}
+.contact{
+    position: relative;
+    width: fit-content;
+}
+.contact::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: blue;
+    left: 35%;
+    z-index: 1;
+    bottom: -21px;
+}
+
+.contact::after{
+    content: "";
+    position: absolute;
+    width: 75px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -20px;
+    left: 20%; 
+}
+.patient{
+    position: relative;
+    width: fit-content;
+}
+.patient::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: blue;
+    left: 40%;
+    z-index: 1;
+    bottom: -21px;
+}
+
+.patient::after{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 1px;
+    background-color: rgb(114, 114, 255);
+    bottom: -20px;
+    left: 20%; 
+}
+
+
+.carousel-indicators [data-bs-target]{
+    background-color: rgba(0, 0, 255, 0.575) !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+}
+

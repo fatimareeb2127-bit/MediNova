@@ -1,0 +1,822 @@
+```html
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MediNova Hospital | Services</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7fbff;
+      color: #263746;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 24px rgba(27, 86, 125, 0.08);
+    }
+
+    .navinner {
+      width: 92%;
+      max-width: 1280px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1264a3;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .brandicon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #087fbe, #20b9a6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 22px rgba(8, 127, 190, 0.25);
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .links a {
+      color: #40576a;
+      font-size: 15px;
+      font-weight: 600;
+      position: relative;
+      padding: 8px 0;
+      transition: 0.3s;
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #1296c8;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      color: #087fbe;
+    }
+
+    .links a:hover::after {
+      width: 100%;
+    }
+
+    .appointment {
+      background: linear-gradient(135deg, #087fbe, #16a5bd);
+      color: white !important;
+      padding: 11px 21px !important;
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(8, 127, 190, 0.22);
+    }
+
+    .appointment::after {
+      display: none;
+    }
+
+    .hero {
+      min-height: 430px;
+      padding: 145px 20px 80px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34, 185, 166, 0.13), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(18, 150, 200, 0.15), transparent 30%),
+        linear-gradient(135deg, #f7fdff, #eef9fc);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(23, 165, 189, 0.08);
+      right: -80px;
+      top: 80px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(17, 127, 190, 0.07);
+      left: -60px;
+      bottom: 30px;
+      animation: float 6s ease-in-out infinite reverse;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 17px;
+      border-radius: 30px;
+      background: #e2f5fb;
+      color: #087fbe;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      margin: 22px 0 15px;
+      color: #183f59;
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 800;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 span {
+      color: #1296c8;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #61798b;
+      line-height: 1.8;
+      font-size: 17px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .services {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 0 100px;
+    }
+
+    .sectiontitle {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .sectiontitle h2 {
+      margin: 0 0 12px;
+      color: #183f59;
+      font-size: 38px;
+      font-weight: 800;
+    }
+
+    .sectiontitle p {
+      max-width: 650px;
+      margin: auto;
+      color: #718596;
+      line-height: 1.7;
+    }
+
+    .servicegrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .servicecard {
+      background: white;
+      border: 1px solid #e5f0f5;
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 45px rgba(35, 87, 119, 0.08);
+      transition: 0.4s ease;
+      animation: reveal 0.8s ease both;
+    }
+
+    .servicecard:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .servicecard:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .servicecard:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    .servicecard::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #eaf8fc;
+      right: -45px;
+      top: -45px;
+      transition: 0.4s;
+    }
+
+    .servicecard:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 25px 60px rgba(35, 87, 119, 0.15);
+      border-color: #cdeaf3;
+    }
+
+    .servicecard:hover::before {
+      transform: scale(1.35);
+      background: #dff5fa;
+    }
+
+    .iconbox {
+      width: 65px;
+      height: 65px;
+      border-radius: 19px;
+      background: linear-gradient(135deg, #e2f7fb, #dff0fb);
+      color: #087fbe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 23px;
+      position: relative;
+      z-index: 2;
+      transition: 0.4s;
+    }
+
+    .servicecard:hover .iconbox {
+      transform: rotate(6deg) scale(1.08);
+      background: linear-gradient(135deg, #087fbe, #20b9a6);
+      color: white;
+    }
+
+    .servicecard h3 {
+      color: #183f59;
+      margin: 0 0 14px;
+      font-size: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .servicecard p {
+      color: #647b8b;
+      line-height: 1.75;
+      margin: 0 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .servicecard ul {
+      padding: 0;
+      margin: 20px 0 0;
+      list-style: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .servicecard li {
+      padding: 9px 0;
+      color: #526b7c;
+      border-bottom: 1px solid #edf4f7;
+      font-size: 14px;
+    }
+
+    .servicecard li:last-child {
+      border-bottom: 0;
+    }
+
+    .servicecard li span {
+      color: #12a092;
+      font-weight: 800;
+      margin-right: 8px;
+    }
+
+    .stats {
+      margin-top: 65px;
+      background: linear-gradient(135deg, #087fbe, #16a5a8);
+      border-radius: 27px;
+      padding: 35px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      color: white;
+      box-shadow: 0 20px 50px rgba(8, 127, 190, 0.2);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 31px;
+      margin-bottom: 7px;
+    }
+
+    .stat span {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .cta {
+      margin-top: 70px;
+      background: white;
+      border-radius: 26px;
+      padding: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      box-shadow: 0 15px 50px rgba(31, 84, 117, 0.09);
+      border: 1px solid #e4eff4;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      color: #183f59;
+      font-size: 30px;
+    }
+
+    .cta p {
+      margin: 0;
+      color: #718596;
+    }
+
+    .ctabutton {
+      background: #087fbe;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 30px;
+      white-space: nowrap;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .ctabutton:hover {
+      background: #056a9f;
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    footer {
+      background: #102f43;
+      color: #d7e6ee;
+      padding: 65px 0 25px;
+    }
+
+    .footergrid {
+      width: 92%;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    footer h3 {
+      color: white;
+      margin: 0 0 20px;
+      font-size: 20px;
+    }
+
+    footer p {
+      line-height: 1.8;
+      color: #b8cbd5;
+      font-size: 14px;
+    }
+
+    .footerlinks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footerlinks a {
+      color: #b8cbd5;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .footerlinks a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .contactline {
+      margin: 12px 0;
+      color: #b8cbd5;
+      font-size: 14px;
+    }
+
+    .bottom {
+      width: 92%;
+      max-width: 1200px;
+      margin: 45px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      text-align: center;
+      color: #91aab8;
+      font-size: 13px;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .links {
+        display: none;
+      }
+
+      .servicegrid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footergrid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        height: 68px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .brandicon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .services {
+        padding-top: 55px;
+      }
+
+      .sectiontitle h2 {
+        font-size: 30px;
+      }
+
+      .servicecard {
+        padding: 25px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        padding: 25px 12px;
+      }
+
+      .stat strong {
+        font-size: 25px;
+      }
+
+      .cta {
+        padding: 30px;
+      }
+
+      .footergrid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="navinner">
+
+      <a href="./index.html" class="brand">
+        <div class="brandicon">✚</div>
+        MediNova
+      </a>
+
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./service.html">Services</a>
+        <a href="./departments.html">Departments</a>
+        <a href="./doctor.html">Doctors</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./appointment.html" class="appointment">Book Appointment</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+
+    <div class="eyebrow">MediNova Healthcare</div>
+
+    <h1>Healthcare Services<br><span>Designed Around You</span></h1>
+
+    <p>
+      From emergency care to advanced diagnostics and everyday healthcare,
+      MediNova provides coordinated medical services with a strong focus on
+      patient safety, comfort and quality care.
+    </p>
+
+  </section>
+
+
+  <main class="services">
+
+    <div class="sectiontitle">
+      <h2>Our Medical Services</h2>
+      <p>
+        Explore our major healthcare services and discover how MediNova
+        supports patients through every stage of their healthcare journey.
+      </p>
+    </div>
+
+
+    <div class="servicegrid">
+
+      <article class="servicecard">
+
+        <div class="iconbox">❤</div>
+
+        <h3>Emergency & Critical Care</h3>
+
+        <p>
+          Immediate medical support for serious injuries, sudden illnesses
+          and conditions that require urgent attention.
+        </p>
+
+        <ul>
+          <li><span>✓</span> 24 hour emergency department</li>
+          <li><span>✓</span> Ambulance and emergency transport</li>
+          <li><span>✓</span> Intensive care support</li>
+          <li><span>✓</span> Continuous patient monitoring</li>
+        </ul>
+
+      </article>
+
+
+      <article class="servicecard">
+
+        <div class="iconbox">⌕</div>
+
+        <h3>Diagnostics & Laboratory</h3>
+
+        <p>
+          Modern diagnostic services designed to help doctors identify
+          health conditions quickly and accurately.
+        </p>
+
+        <ul>
+          <li><span>✓</span> Digital X ray</li>
+          <li><span>✓</span> CT and MRI imaging</li>
+          <li><span>✓</span> Ultrasound services</li>
+          <li><span>✓</span> Blood and pathology testing</li>
+        </ul>
+
+      </article>
+
+
+      <article class="servicecard">
+
+        <div class="iconbox">✚</div>
+
+        <h3>Pharmacy & Patient Support</h3>
+
+        <p>
+          Convenient healthcare support with access to medicines,
+          prescriptions and patient information.
+        </p>
+
+        <ul>
+          <li><span>✓</span> Pharmacy services</li>
+          <li><span>✓</span> Prescription support</li>
+          <li><span>✓</span> Digital medical records</li>
+          <li><span>✓</span> Telemedicine consultations</li>
+        </ul>
+
+      </article>
+
+
+      <article class="servicecard">
+
+        <div class="iconbox">♿</div>
+
+        <h3>Mobility & Patient Assistance</h3>
+
+        <p>
+          Safe and comfortable mobility assistance for patients,
+          visitors and people requiring additional support.
+        </p>
+
+        <ul>
+          <li><span>✓</span> Wheelchair availability</li>
+          <li><span>✓</span> Entrance assistance</li>
+          <li><span>✓</span> Patient transport support</li>
+          <li><span>✓</span> Pediatric and special mobility options</li>
+        </ul>
+
+      </article>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Emergency Support</span>
+      </div>
+
+      <div class="stat">
+        <strong>50+</strong>
+        <span>Medical Specialists</span>
+      </div>
+
+      <div class="stat">
+        <strong>15+</strong>
+        <span>Healthcare Departments</span>
+      </div>
+
+      <div class="stat">
+        <strong>10K+</strong>
+        <span>Patients Served</span>
+      </div>
+
+    </div>
+
+
+    <div class="cta">
+
+      <div>
+        <h2>Need Medical Assistance?</h2>
+        <p>
+          Book an appointment with a MediNova specialist today.
+        </p>
+      </div>
+
+      <a href="./appointment.html" class="ctabutton">
+        Book Appointment
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footergrid">
+
+      <div>
+        <h3>✚ MediNova Hospital</h3>
+
+        <p>
+          MediNova is a modern healthcare institution focused on
+          accessible medical care, advanced diagnostics and patient
+          centered services.
+        </p>
+
+        <p>
+          Our goal is to provide reliable healthcare in a safe,
+          comfortable and professional environment.
+        </p>
+      </div>
+
+
+      <div>
+
+        <h3>Quick Links</h3>
+
+        <div class="footerlinks">
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About Us</a>
+          <a href="./service.html">Services</a>
+          <a href="./departments.html">Departments</a>
+          <a href="./doctor.html">Doctors</a>
+          <a href="./gallery.html">Gallery</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3>Contact</h3>
+
+        <div class="contactline">
+          📍 132 Road, Pakistan
+        </div>
+
+        <div class="contactline">
+          📞 +92 2 1234 5678
+        </div>
+
+        <div class="contactline">
+          ✉ info@medinovahospital.com
+        </div>
+
+        <div class="contactline">
+          🕐 Emergency services available 24 hours
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bottom">
+      © 2026 MediNova Hospital. All Rights Reserved.
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
+```

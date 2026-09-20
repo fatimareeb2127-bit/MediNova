@@ -1,0 +1,1651 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MediNova | Our Doctors</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+</head>
+
+<style>
+
+  /* =========================================================
+     GLOBAL
+  ========================================================= */
+
+  :root {
+    --primary: #1c4f92;
+    --primary-dark: #12386d;
+    --secondary: #0ea5e9;
+    --cyan: #55d9ff;
+    --light: #f3f9ff;
+    --text: #26364a;
+    --muted: #6d7d91;
+    --white: #ffffff;
+    --shadow: 0 15px 45px rgba(28, 79, 146, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+
+  /* =========================================================
+     NAVBAR
+  ========================================================= */
+
+  .main-navbar {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 5px 25px rgba(19, 56, 109, 0.08);
+    padding: 13px 0;
+    transition: 0.3s ease;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--primary) !important;
+    font-weight: 800;
+    font-size: 26px;
+  }
+
+  .brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25);
+  }
+
+  .brand-text small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    color: #7c8da2;
+    margin-top: -3px;
+    text-transform: uppercase;
+  }
+
+  .navbar-nav {
+    gap: 4px;
+  }
+
+  .navbar .nav-link {
+    color: #42546b !important;
+    font-weight: 600;
+    padding: 10px 13px !important;
+    border-radius: 9px;
+    position: relative;
+    transition: 0.3s ease;
+  }
+
+  .navbar .nav-link:hover {
+    color: var(--primary) !important;
+    background: #eef7ff;
+  }
+
+  .navbar .nav-link.active {
+    color: var(--primary) !important;
+    background: #eef7ff;
+  }
+
+  .navbar .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    right: 13px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 20px;
+    background: var(--secondary);
+  }
+
+  .appointment-nav {
+    background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 11px 18px !important;
+    margin-left: 7px;
+    box-shadow: 0 8px 20px rgba(28, 79, 146, 0.2);
+  }
+
+  .appointment-nav:hover {
+    color: white !important;
+    transform: translateY(-2px);
+    background: linear-gradient(
+      135deg,
+      var(--primary-dark),
+      var(--primary)
+    ) !important;
+  }
+
+  .navbar-toggler {
+    border: 1px solid #dce8f4;
+    padding: 8px 10px;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+
+  .doctor-hero {
+    position: relative;
+    min-height: 430px;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        110deg,
+        rgba(8, 42, 82, 0.96),
+        rgba(28, 79, 146, 0.88),
+        rgba(14, 165, 233, 0.68)
+      ),
+      url("./images/hero.jpg") center / cover no-repeat;
+  }
+
+  .doctor-hero::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.13);
+    right: -120px;
+    top: -150px;
+    animation: rotateCircle 22s linear infinite;
+  }
+
+  .doctor-hero::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.10);
+    left: -120px;
+    bottom: -160px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    animation: heroReveal 1s ease;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.20);
+    backdrop-filter: blur(10px);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge i {
+    color: var(--cyan);
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title span {
+    color: var(--cyan);
+  }
+
+  .hero-description {
+    max-width: 680px;
+    color: rgba(255,255,255,0.82);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-btn-primary {
+    background: white;
+    color: var(--primary);
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+
+  .hero-btn-primary:hover {
+    background: #eaf7ff;
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+
+  .hero-btn-outline {
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.08);
+    transition: 0.3s;
+  }
+
+  .hero-btn-outline:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-3px);
+  }
+
+
+  /* =========================================================
+     DOCTORS SECTION
+  ========================================================= */
+
+  .doctors-section {
+    position: relative;
+    padding: 100px 0;
+    background:
+      radial-gradient(
+        circle at 8% 15%,
+        rgba(14,165,233,0.10),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(28,79,146,0.07),
+        transparent 30%
+      ),
+      #f5fbff;
+    overflow: hidden;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  .section-label {
+    color: var(--secondary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-heading h2 {
+    color: var(--primary-dark);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+
+  .section-heading p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+
+  /* =========================================================
+     DOCTOR CARD
+  ========================================================= */
+
+  .doctor-card {
+    height: 100%;
+    background: white;
+    border: 1px solid rgba(28,79,146,0.07);
+    border-radius: 20px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(28,79,146,0.08);
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+    animation: cardReveal 0.8s ease both;
+  }
+
+  .doctor-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--secondary),
+      var(--cyan)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: 0.4s;
+  }
+
+  .doctor-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(28,79,146,0.15);
+  }
+
+  .doctor-image-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 10px auto 20px;
+  }
+
+  .doctor-image-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 2px dashed rgba(14,165,233,0.35);
+    animation: spinSlow 15s linear infinite;
+  }
+
+  .doctor-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 12px 30px rgba(28,79,146,0.18);
+    position: relative;
+    z-index: 2;
+    transition: 0.5s ease;
+  }
+
+  .doctor-card:hover .doctor-image {
+    transform: scale(1.06);
+  }
+
+  .doctor-status {
+    position: absolute;
+    right: 4px;
+    bottom: 8px;
+    width: 18px;
+    height: 18px;
+    background: #19b66b;
+    border: 3px solid white;
+    border-radius: 50%;
+    z-index: 5;
+  }
+
+  .doctor-info {
+    text-align: center;
+    padding: 5px 10px 15px;
+  }
+
+  .doctor-name {
+    color: var(--primary-dark);
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 7px;
+  }
+
+  .doctor-specialty {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    background: #eef7ff;
+    padding: 7px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .doctor-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 72px;
+  }
+
+  .doctor-divider {
+    width: 70%;
+    margin: 15px auto;
+    border-top: 1px solid #e8eff6;
+  }
+
+  .doctor-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .doctor-social {
+    width: 37px;
+    height: 37px;
+    border-radius: 10px;
+    background: #f0f7fd;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+
+  .doctor-social:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .doctor-book {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+
+  .doctor-book:hover {
+    background: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+
+  /* =========================================================
+     BOTTOM CTA
+  ========================================================= */
+
+  .doctor-cta {
+    margin-top: 70px;
+    padding: 45px;
+    border-radius: 22px;
+    color: white;
+    background:
+      linear-gradient(
+        120deg,
+        rgba(18,56,109,0.98),
+        rgba(28,79,146,0.94)
+      );
+    box-shadow: 0 20px 50px rgba(28,79,146,0.18);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doctor-cta::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    right: -80px;
+    top: -100px;
+  }
+
+  .doctor-cta h3 {
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .doctor-cta p {
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--primary);
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+
+  .cta-btn:hover {
+    background: #eaf7ff;
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+
+
+  /* =========================================================
+     FOOTER
+  ========================================================= */
+
+  .footer {
+    background: #0b2343;
+    color: white;
+    padding: 70px 0 25px;
+  }
+
+  .footer-brand {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+
+  .footer-brand i {
+    color: var(--cyan);
+  }
+
+  .footer p {
+    color: rgba(255,255,255,0.63);
+    line-height: 1.8;
+  }
+
+  .footer h5 {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 11px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.63);
+    transition: 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: var(--cyan);
+    padding-left: 5px;
+  }
+
+  .footer-contact {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: rgba(255,255,255,0.63);
+  }
+
+  .footer-contact i {
+    color: var(--cyan);
+    margin-top: 5px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .social-links a {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    transition: 0.3s;
+  }
+
+  .social-links a:hover {
+    background: var(--secondary);
+    transform: translateY(-4px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.10);
+    margin-top: 45px;
+    padding-top: 22px;
+    text-align: center;
+    color: rgba(255,255,255,0.48);
+    font-size: 13px;
+  }
+
+
+  /* =========================================================
+     ANIMATIONS
+  ========================================================= */
+
+  @keyframes heroReveal {
+    from {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardReveal {
+    from {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rotateCircle {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinSlow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+
+  @media (max-width: 991px) {
+
+    .navbar-nav {
+      padding-top: 15px;
+    }
+
+    .navbar .nav-link {
+      margin-bottom: 3px;
+    }
+
+    .appointment-nav {
+      margin-left: 0;
+      margin-top: 8px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .doctor-hero {
+      min-height: 430px;
+    }
+
+    .doctor-cta {
+      text-align: center;
+    }
+
+    .doctor-cta .text-lg-end {
+      text-align: center !important;
+      margin-top: 25px;
+    }
+  }
+
+
+  @media (max-width: 767px) {
+
+    .doctor-hero {
+      min-height: 500px;
+    }
+
+    .hero-title {
+      font-size: 44px;
+    }
+
+    .hero-description {
+      font-size: 15px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-buttons a {
+      text-align: center;
+    }
+
+    .doctors-section {
+      padding: 70px 0;
+    }
+
+    .doctor-cta {
+      padding: 30px 22px;
+    }
+
+    .doctor-image-wrapper,
+    .doctor-image {
+      width: 135px;
+      height: 135px;
+    }
+
+    .footer {
+      padding-top: 55px;
+    }
+
+  }
+
+</style>
+
+
+<body>
+
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
+
+  <nav class="navbar navbar-expand-lg fixed-top main-navbar">
+
+    <div class="container">
+
+      <a class="navbar-brand" href="./index.html">
+
+        <span class="brand-icon">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </span>
+
+        <span class="brand-text">
+          MediNova
+          <small>Modern Healthcare</small>
+        </span>
+
+      </a>
+
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">
+              About
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./service.html">
+              Services
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./departments.html">
+              Departments
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="./doctor.html">
+              Doctors
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./gallery.html">
+              Gallery
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./contact.html">
+              Contact
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link appointment-nav"
+              href="./appointment.html">
+
+              <i class="fa-regular fa-calendar-check me-1"></i>
+              Appointment
+
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="doctor-hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="hero-badge">
+
+          <i class="fa-solid fa-user-doctor"></i>
+
+          MediNova Medical Specialists
+
+        </div>
+
+
+        <h1 class="hero-title">
+
+          Meet Our
+          <span>Doctors</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          Meet the healthcare professionals at MediNova who are
+          dedicated to providing reliable medical care, professional
+          guidance and a patient focused healthcare experience.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a href="./appointment.html"
+            class="hero-btn-primary">
+
+            <i class="fa-regular fa-calendar-check me-2"></i>
+
+            Book Appointment
+
+          </a>
+
+
+          <a href="./departments.html"
+            class="hero-btn-outline">
+
+            Explore Departments
+
+            <i class="fa-solid fa-arrow-right ms-2"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       DOCTORS
+  ====================================================== -->
+
+  <section class="doctors-section">
+
+    <div class="container">
+
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          Our Specialists
+        </span>
+
+        <h2>
+          Experienced Medical Professionals
+        </h2>
+
+        <p>
+          Our doctors represent different medical specialties and
+          are focused on providing professional consultation and
+          patient centered care.
+        </p>
+
+      </div>
+
+
+      <div class="row g-4">
+
+
+        <!-- =================================================
+             DOCTOR 1
+        ================================================== -->
+
+        <div class="col-lg-6 col-md-6">
+
+          <div class="doctor-card">
+
+            <div class="doctor-image-wrapper">
+
+              <img
+                src="./images/doctors-1.jpg"
+                class="doctor-image"
+                alt="Dr. Hassan Malik">
+
+              <span class="doctor-status"></span>
+
+            </div>
+
+
+            <div class="doctor-info">
+
+              <h3 class="doctor-name">
+                Dr. Hassan Malik
+              </h3>
+
+
+              <div class="doctor-specialty">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                Interventional Cardiology
+
+              </div>
+
+
+              <p class="doctor-description">
+
+                Interventional Cardiologist and Cardiac
+                Electrophysiology Specialist focused on
+                cardiovascular assessment and treatment.
+
+              </p>
+
+
+              <div class="doctor-divider"></div>
+
+
+              <div class="doctor-actions">
+
+                <a href="./appointment.html"
+                  class="doctor-book">
+
+                  <i class="fa-regular fa-calendar-check"></i>
+
+                  Book Appointment
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="Facebook">
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="LinkedIn">
+
+                  <i class="fa-brands fa-linkedin-in"></i>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DOCTOR 2
+        ================================================== -->
+
+        <div class="col-lg-6 col-md-6">
+
+          <div class="doctor-card">
+
+            <div class="doctor-image-wrapper">
+
+              <img
+                src="./images/doctors-2.jpg"
+                class="doctor-image"
+                alt="Dr. Ayesha Khan">
+
+              <span class="doctor-status"></span>
+
+            </div>
+
+
+            <div class="doctor-info">
+
+              <h3 class="doctor-name">
+                Dr. Ayesha Khan
+              </h3>
+
+
+              <div class="doctor-specialty">
+
+                <i class="fa-solid fa-brain"></i>
+
+                Neurology
+
+              </div>
+
+
+              <p class="doctor-description">
+
+                Neurologist specializing in neurological
+                assessment and neuromuscular disorders with
+                a focus on comprehensive patient care.
+
+              </p>
+
+
+              <div class="doctor-divider"></div>
+
+
+              <div class="doctor-actions">
+
+                <a href="./appointment.html"
+                  class="doctor-book">
+
+                  <i class="fa-regular fa-calendar-check"></i>
+
+                  Book Appointment
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="Facebook">
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="LinkedIn">
+
+                  <i class="fa-brands fa-linkedin-in"></i>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DOCTOR 3
+        ================================================== -->
+
+        <div class="col-lg-6 col-md-6">
+
+          <div class="doctor-card">
+
+            <div class="doctor-image-wrapper">
+
+              <img
+                src="./images/doctors-3.jpg"
+                class="doctor-image"
+                alt="Dr. Ali Hamza">
+
+              <span class="doctor-status"></span>
+
+            </div>
+
+
+            <div class="doctor-info">
+
+              <h3 class="doctor-name">
+                Dr. Ali Hamza
+              </h3>
+
+
+              <div class="doctor-specialty">
+
+                <i class="fa-solid fa-tooth"></i>
+
+                Dental Specialist
+
+              </div>
+
+
+              <p class="doctor-description">
+
+                Dental care specialist providing professional
+                oral healthcare, preventive treatment and
+                orthodontic support.
+
+              </p>
+
+
+              <div class="doctor-divider"></div>
+
+
+              <div class="doctor-actions">
+
+                <a href="./appointment.html"
+                  class="doctor-book">
+
+                  <i class="fa-regular fa-calendar-check"></i>
+
+                  Book Appointment
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="Facebook">
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="LinkedIn">
+
+                  <i class="fa-brands fa-linkedin-in"></i>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DOCTOR 4
+        ================================================== -->
+
+        <div class="col-lg-6 col-md-6">
+
+          <div class="doctor-card">
+
+            <div class="doctor-image-wrapper">
+
+              <img
+                src="./images/doctors-4.jpg"
+                class="doctor-image"
+                alt="Dr. Hassan Malik">
+
+              <span class="doctor-status"></span>
+
+            </div>
+
+
+            <div class="doctor-info">
+
+              <h3 class="doctor-name">
+                Dr. Sahra Ahmad
+              </h3>
+
+
+              <div class="doctor-specialty">
+
+                <i class="fa-solid fa-child"></i>
+
+                Pediatrics
+
+              </div>
+
+
+              <p class="doctor-description">
+
+                Pediatrician focused on diagnosis, treatment
+                and healthcare support for children and
+                childhood illnesses.
+
+              </p>
+
+
+              <div class="doctor-divider"></div>
+
+
+              <div class="doctor-actions">
+
+                <a href="./appointment.html"
+                  class="doctor-book">
+
+                  <i class="fa-regular fa-calendar-check"></i>
+
+                  Book Appointment
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="Facebook">
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+
+                <a href="#"
+                  class="doctor-social"
+                  title="LinkedIn">
+
+                  <i class="fa-brands fa-linkedin-in"></i>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           CTA
+      ================================================== -->
+
+      <div class="doctor-cta">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-8">
+
+            <h3>
+              Need medical consultation?
+            </h3>
+
+            <p>
+              Schedule an appointment with a MediNova specialist
+              according to your healthcare needs.
+            </p>
+
+          </div>
+
+
+          <div class="col-lg-4 text-lg-end">
+
+            <a href="./appointment.html"
+              class="cta-btn">
+
+              <i class="fa-regular fa-calendar-check me-2"></i>
+
+              Schedule Appointment
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="row g-5">
+
+
+        <!-- ABOUT -->
+
+        <div class="col-lg-5 col-md-6">
+
+          <div class="footer-brand">
+
+            <i class="fa-solid fa-heart-pulse me-2"></i>
+
+            MediNova
+
+          </div>
+
+          <p>
+
+            MediNova provides modern healthcare services focused
+            on professional medical care, accessibility and
+            patient wellbeing.
+
+          </p>
+
+
+          <div class="social-links">
+
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- LINKS -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <h5>
+            Quick Links
+          </h5>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="./index.html">
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a href="./about.html">
+                About
+              </a>
+            </li>
+
+            <li>
+              <a href="./service.html">
+                Services
+              </a>
+            </li>
+
+            <li>
+              <a href="./departments.html">
+                Departments
+              </a>
+            </li>
+
+            <li>
+              <a href="./gallery.html">
+                Gallery
+              </a>
+            </li>
+
+            <li>
+              <a href="./contact.html">
+                Contact
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- CONTACT -->
+
+        <div class="col-lg-4 col-md-12">
+
+          <h5>
+            Contact MediNova
+          </h5>
+
+
+          <div class="footer-contact">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <span>
+              132 136 ABC Road,<br>
+              Mianwali, Punjab, Pakistan
+            </span>
+
+          </div>
+
+
+          <div class="footer-contact">
+
+            <i class="fa-solid fa-phone"></i>
+
+            <span>
+              +92 123 4567890
+            </span>
+
+          </div>
+
+
+          <div class="footer-contact">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <span>
+              info@medinova.com
+            </span>
+
+          </div>
+
+
+          <div class="footer-contact">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <span>
+              Mon to Sat: 9:00 AM to 8:00 PM
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        © 2026 MediNova. All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       BOOTSTRAP JS
+  ====================================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* Navbar shadow on scroll */
+
+    window.addEventListener("scroll", function () {
+
+      const navbar =
+        document.querySelector(".main-navbar");
+
+      if (window.scrollY > 30) {
+
+        navbar.style.boxShadow =
+          "0 8px 30px rgba(28,79,146,0.13)";
+
+      } else {
+
+        navbar.style.boxShadow =
+          "0 5px 25px rgba(19,56,109,0.08)";
+
+      }
+
+    });
+
+
+    /* Close mobile navbar after navigation */
+
+    document
+      .querySelectorAll(".navbar-nav .nav-link")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          const navbar =
+            document.getElementById("mainNavbar");
+
+          if (navbar.classList.contains("show")) {
+
+            bootstrap.Collapse
+              .getOrCreateInstance(navbar)
+              .hide();
+
+          }
+
+        });
+
+      });
+
+  </script>
+
+</body>
+
+</html>

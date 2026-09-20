@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MediNova | Hospital Gallery</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f3a53;
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      min-height: 76px;
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 5px 25px rgba(31,58,83,0.10);
+      z-index: 1000;
+    }
+
+    .brand-box {
+      width: 160px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#1f3a53,#1684bd);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      box-shadow: 0 8px 20px rgba(31,58,83,.18);
+      transition: .3s ease;
+    }
+
+    .brand-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(31,58,83,.25);
+    }
+
+    .nav-link {
+      color: #1f3a53 !important;
+      font-weight: 500;
+      position: relative;
+      padding: 10px 4px !important;
+      transition: .3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 0;
+      height: 2px;
+      background: #1c91ca;
+      transition: .3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #117db7 !important;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .appointment-btn {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg,#1f3a53,#1684bd);
+      color: white !important;
+      box-shadow: 0 7px 18px rgba(31,58,83,.18);
+      transition: .3s ease;
+    }
+
+    .appointment-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(31,58,83,.25);
+    }
+
+
+    /* =========================
+       GALLERY HERO
+    ========================= */
+
+    .gallery-section {
+      margin-top: 76px;
+      padding: 90px 0 110px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 10% 20%, rgba(64,181,230,.16), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(31,58,83,.08), transparent 30%),
+        #eaf9ff;
+    }
+
+    .gallery-section::before {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      top: -170px;
+      left: -120px;
+      animation: floatShape 8s ease-in-out infinite;
+    }
+
+    .gallery-section::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(55,177,220,.08);
+      bottom: -130px;
+      right: -80px;
+      animation: floatShape 10s ease-in-out infinite reverse;
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .small-heading {
+      display: inline-block;
+      padding: 7px 16px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.75);
+      color: #1477a9;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #1f3a53;
+      margin-bottom: 15px;
+    }
+
+    .gallery-title span {
+      color: #1684bd;
+    }
+
+    .gallery-subtitle {
+      max-width: 680px;
+      margin: auto;
+      color: #607584;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+
+    /* =========================
+       GALLERY GRID
+    ========================= */
+
+    .gallery-grid {
+      position: relative;
+      z-index: 2;
+      margin-top: 55px;
+    }
+
+    .gallery-card {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(31,58,83,.10);
+      cursor: pointer;
+      animation: cardReveal .8s ease both;
+    }
+
+    .gallery-card:nth-child(2) {
+      animation-delay: .08s;
+    }
+
+    .gallery-card:nth-child(3) {
+      animation-delay: .16s;
+    }
+
+    .gallery-card:nth-child(4) {
+      animation-delay: .24s;
+    }
+
+    .gallery-card:nth-child(5) {
+      animation-delay: .32s;
+    }
+
+    .gallery-card:nth-child(6) {
+      animation-delay: .40s;
+    }
+
+    .gallery-card:nth-child(7) {
+      animation-delay: .48s;
+    }
+
+    .gallery-card:nth-child(8) {
+      animation-delay: .56s;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(7,34,52,.72),
+        rgba(7,34,52,.08) 55%,
+        transparent
+      );
+      opacity: .85;
+      transition: .4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.10);
+    }
+
+    .gallery-card:hover::after {
+      background: linear-gradient(
+        to top,
+        rgba(7,34,52,.85),
+        rgba(7,34,52,.20) 60%,
+        transparent
+      );
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      z-index: 3;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transform: translateY(8px);
+      transition: .4s ease;
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay h5 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .gallery-overlay small {
+      opacity: .85;
+    }
+
+    .view-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.3);
+      transition: .3s ease;
+    }
+
+    .gallery-card:hover .view-icon {
+      background: #1684bd;
+      transform: rotate(8deg) scale(1.08);
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .gallery-modal {
+      background: rgba(4,20,30,.92);
+    }
+
+    .gallery-modal .modal-content {
+      background: transparent;
+      border: none;
+    }
+
+    .gallery-modal img {
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+
+    .gallery-modal .btn-close {
+      filter: invert(1);
+      opacity: 1;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 10;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      background: linear-gradient(180deg,#f6fbff,#edf8fd);
+      padding: 70px 0 25px;
+    }
+
+    .footer h4 {
+      color: #023c72;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer p {
+      color: #526875;
+      line-height: 1.8;
+    }
+
+    .footer-links a {
+      color: #526875;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 8px;
+      transition: .3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #087bb7;
+      transform: translateX(5px);
+    }
+
+    .footer-brand {
+      width: 120px;
+      height: 38px;
+      border-radius: 8px;
+      background: linear-gradient(135deg,#1f3a53,#1684bd);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .social-links a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: white;
+      color: #1f3a53;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 9px;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(31,58,83,.10);
+      transition: .3s ease;
+    }
+
+    .social-links a:hover {
+      color: white;
+      background: #1684bd;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(31,58,83,.12);
+      margin-top: 45px;
+      padding-top: 22px;
+      text-align: center;
+      color: #647783;
+    }
+
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes floatShape {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(25px);
+      }
+    }
+
+    @keyframes cardReveal {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:991px) {
+
+      .navbar .container-fluid {
+        padding: 10px 20px;
+      }
+
+      .brand-box {
+        margin-left: 0 !important;
+      }
+
+      .navbar-nav {
+        padding-top: 15px;
+      }
+
+      .nav-item {
+        margin-left: 0 !important;
+      }
+
+      .appointment-btn {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      .gallery-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media(max-width:575px) {
+
+      .gallery-section {
+        padding-top: 65px;
+      }
+
+      .gallery-title {
+        font-size: 2.2rem;
+      }
+
+      .gallery-subtitle {
+        font-size: 15px;
+      }
+
+      .gallery-card {
+        height: 245px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container-fluid px-lg-5">
+
+      <a href="./index.html" class="text-decoration-none">
+
+        <div class="brand-box">
+          MediNova
+        </div>
+
+      </a>
+
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-lg-5 me-auto mb-2 mb-lg-0 gap-lg-3">
+
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./service.html">Service</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./departments.html">Departments</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./doctor.html">Doctor</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="./gallery.html">Gallery</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+
+        </ul>
+
+
+        <a
+          href="./appointment.html"
+          class="appointment-btn text-decoration-none">
+
+          <i class="fa-solid fa-calendar-check me-2"></i>
+          Appointment
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       GALLERY
+  ========================= -->
+
+  <section class="gallery-section">
+
+    <div class="container section-content">
+
+      <div class="text-center">
+
+        <span class="small-heading">
+          MEDINOVA HOSPITAL
+        </span>
+
+        <h1 class="gallery-title">
+          Our <span>Gallery</span>
+        </h1>
+
+        <p class="gallery-subtitle">
+          Explore MediNova Hospital, our modern facilities,
+          advanced medical environment, healthcare professionals,
+          and patient focused spaces.
+        </p>
+
+      </div>
+
+
+      <div class="row g-4 gallery-grid">
+
+
+        <!-- Image 1 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-1.jpg"
+            data-title="MediNova Hospital">
+
+            <img
+              src="./images/gallery-1.jpg"
+              alt="MediNova Hospital">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Hospital</h5>
+                <small>Explore MediNova</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 2 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-2.jpg"
+            data-title="Medical Care">
+
+            <img
+              src="./images/gallery-2.jpg"
+              alt="Medical Care">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Medical Care</h5>
+                <small>Professional treatment</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 3 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-3.jpg"
+            data-title="Healthcare Team">
+
+            <img
+              src="./images/gallery-3.jpg"
+              alt="Healthcare Team">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Healthcare Team</h5>
+                <small>Experts in healthcare</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 4 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-4.jpg"
+            data-title="Modern Facility">
+
+            <img
+              src="./images/gallery-4.jpg"
+              alt="Modern Facility">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Modern Facility</h5>
+                <small>Advanced environment</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 5 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-5.jpg"
+            data-title="Patient Care">
+
+            <img
+              src="./images/gallery-5.jpg"
+              alt="Patient Care">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Patient Care</h5>
+                <small>Compassionate service</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 6 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-6.jpg"
+            data-title="Medical Technology">
+
+            <img
+              src="./images/gallery-6.jpg"
+              alt="Medical Technology">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Technology</h5>
+                <small>Modern medical equipment</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 7 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-7.jpg"
+            data-title="Specialized Care">
+
+            <img
+              src="./images/gallery-7.jpg"
+              alt="Specialized Care">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>Specialized Care</h5>
+                <small>Dedicated medical teams</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Image 8 -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div
+            class="gallery-card"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            data-image="./images/gallery-8.jpg"
+            data-title="MediNova Experience">
+
+            <img
+              src="./images/gallery-8.jpg"
+              alt="MediNova Experience">
+
+            <div class="gallery-overlay">
+
+              <div>
+                <h5>MediNova</h5>
+                <small>Healthcare excellence</small>
+              </div>
+
+              <div class="view-icon">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       IMAGE MODAL
+  ========================= -->
+
+  <div
+    class="modal fade gallery-modal"
+    id="imageModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+
+      <div class="modal-content">
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal">
+        </button>
+
+        <img
+          id="modalImage"
+          src=""
+          alt="Gallery Image">
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="row gy-5">
+
+
+        <div class="col-lg-5">
+
+          <h4>
+            <i class="fa-solid fa-hospital me-2"></i>
+            About MediNova Hospital
+          </h4>
+
+          <p>
+            MediNova Hospital is dedicated to providing modern
+            healthcare services with compassion, advanced technology,
+            and professional medical expertise.
+          </p>
+
+          <p>
+            Our goal is to create a safe, comfortable, and
+            patient focused environment for every visitor.
+          </p>
+
+        </div>
+
+
+        <div class="col-lg-3 col-md-6 footer-links">
+
+          <h4>Useful Links</h4>
+
+          <a href="./index.html">Home</a><br>
+          <a href="./about.html">About</a><br>
+          <a href="./service.html">Services</a><br>
+          <a href="./departments.html">Departments</a><br>
+          <a href="./doctor.html">Doctors</a><br>
+          <a href="./gallery.html">Gallery</a><br>
+          <a href="./contact.html">Contact</a>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+          <div class="footer-brand">
+            MediNova
+          </div>
+
+          <div class="mt-4">
+
+            <p>
+              <i class="fa-solid fa-location-dot me-2"></i>
+              132-136 abc Rd, ABC 123, Pakistan
+            </p>
+
+            <p>
+              <i class="fa-solid fa-phone me-2"></i>
+              +92 123 4567890
+            </p>
+
+            <p>
+              <i class="fa-solid fa-envelope me-2"></i>
+              info@medinova.com
+            </p>
+
+          </div>
+
+
+          <div class="social-links d-flex mt-4">
+
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a href="#">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        © 2026
+        <strong>MediNova</strong>.
+        All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script>
+
+    const galleryCards =
+      document.querySelectorAll(".gallery-card");
+
+    const modalImage =
+      document.getElementById("modalImage");
+
+
+    galleryCards.forEach(card => {
+
+      card.addEventListener("click", function () {
+
+        const image =
+          this.getAttribute("data-image");
+
+        const title =
+          this.getAttribute("data-title");
+
+        modalImage.src = image;
+        modalImage.alt = title;
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
