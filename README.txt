@@ -26,15 +26,10 @@ HTML5 • CSS3 • Bootstrap 5 • JavaScript • Font Awesome
 ### Home
 ![MediNova Home](./screenshots/home.png)
 
-### Departments
-![Departments](./screenshots/departments.png)
-
 ### Doctors
-![Doctors](./screenshots/doctors.png)
+![MediNova Doctors](./screenshots/doctor.png)
 
-### Appointment
-![Appointment](./screenshots/appointment.png)
+### Departments
+![MediNova Departments](./screenshots/departments.png)
 
-## Author
 
-Areeb Fatima
