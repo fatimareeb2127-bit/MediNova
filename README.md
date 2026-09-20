@@ -38,8 +38,5 @@ HTML5 • CSS3 • Bootstrap 5 • JavaScript • Font Awesome
 ### Doctors
 ![MediNova Doctors](./screenshots/doctors.png)
 
-### Gallery
-![MediNova Gallery](./screenshots/gallery.png)
-
 ### Appointment
 ![MediNova Appointment](./screenshots/appointment.png)
